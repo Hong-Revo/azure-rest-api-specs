@@ -29,9 +29,12 @@ This is not used by Autorest itself.
 ``` yaml $(swagger-to-sdk)
 swagger-to-sdk:
   - repo: azure-sdk-for-python
-  - repo: azure-libraries-for-java
+  - repo: azure-sdk-for-java
   - repo: azure-sdk-for-go
   - repo: azure-sdk-for-node
+  - repo: azure-sdk-for-ruby
+    after_scripts:
+      - bundle install && rake arm:regen_all_profiles['azure_cognitiveservices_face']
 ```
 
 
@@ -113,7 +116,7 @@ java:
   namespace: com.microsoft.azure.cognitiveservices.vision.faceapi
   license-header: MICROSOFT_MIT_NO_CODEGEN
   payload-flattening-threshold: 1
-  output-folder: $(azure-libraries-for-java-folder)/azure-cognitiveservices/vision/faceapi
+  output-folder: $(azure-libraries-for-java-folder)/cognitiveservices/data-plane/vision/faceapi
   with-optional-parameters: true
   with-single-async-method: true
 ```
